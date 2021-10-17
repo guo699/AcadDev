@@ -42,9 +42,32 @@ namespace BaseTest
                     PromptResult result = ed.Drag(moveJig);
                     if(result.Status == PromptStatus.OK)
                     {
-                        this.MoveEntitis(doc, moveJig.M, ents.ToArray());
+                        this.MoveEntitis(doc, moveJig.M, ents.Select(n=>n.Id).ToArray());
                     }
                 }
+            }
+        }
+
+        [CommandMethod("MoveTest")]
+        public void MoveTest()
+        {
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
+            Editor ed = doc.Editor;
+
+            List<Entity> ents = new List<Entity>();
+
+            PromptSelectionOptions options = new PromptSelectionOptions();
+            options.AllowDuplicates = false;
+            options.MessageForAdding = "\n拾取实体";
+            options.MessageForRemoval = "\n筛出实体";
+            PromptSelectionResult selectionResult = ed.GetSelection(options);
+            if (selectionResult.Status == PromptStatus.OK)
+            {
+                SelectionSet selectionSet = selectionResult.Value;
+                ents = this.GetEntitisFromIds(doc, selectionSet.GetObjectIds());
+                Matrix3d m = Matrix3d.Displacement((new Point3d(100, 100, 0)).GetVectorTo(Point3d.Origin));
+                this.MoveEntitis(doc, m, ents.Select(n=>n.Id).ToArray());
             }
         }
 
@@ -63,15 +86,15 @@ namespace BaseTest
             }
         }
 
-        private void MoveEntitis(Document doc,Matrix3d m,params Entity[] entitis)
+        private void MoveEntitis(Document doc,Matrix3d m,params ObjectId[] ids)
         {
             using (Transaction ts = doc.TransactionManager.StartTransaction())
             {
-                BlockTable table = ts.GetObject(doc.Database.BlockTableId, OpenMode.ForWrite) as BlockTable;
-                BlockTableRecord record = ts.GetObject(table[BlockTableRecord.ModelSpace], OpenMode.ForWrite) as BlockTableRecord;
-                for (int i = 0; i < entitis.Length; i++)
+                Entity ent;
+                for (int i = 0; i < ids.Length; i++)
                 {
-                    entitis[i].TransformBy(m);
+                    ent = ts.GetObject(ids[i],OpenMode.ForWrite) as Entity;
+                    ent.TransformBy(m);
                 }
                 ts.Commit();
             }
