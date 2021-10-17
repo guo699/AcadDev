@@ -14,11 +14,11 @@ namespace Xload
         [CommandMethod("Xload")]
         public void Xload()
         {
-            byte[] matedata = File.ReadAllBytes(@"D:\Code\CSharp\AcadDev\ViewMove\bin\Debug\ViewMove.dll");
+            byte[] matedata = File.ReadAllBytes(@"D:\Code\CSharp\AcadDev\BaseTest\bin\Debug\BaseTest.dll");
             Assembly dll = Assembly.Load(matedata);
-            Type type = dll.GetType("ViewMove.DllMain");
-            object instance = dll.CreateInstance("ViewMove.DllMain");
-            type.GetMethod("ViewRotate").Invoke(instance, null);
+            Type type = dll.GetType("BaseTest.DllMain");
+            object instance = dll.CreateInstance("BaseTest.DllMain");
+            type.GetMethod("JigTest").Invoke(instance, null);
         }
     }
 }
