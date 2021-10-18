@@ -16,9 +16,9 @@ namespace Xload
         {
             byte[] matedata = File.ReadAllBytes(@"D:\Code\CSharp\AcadDev\BaseTest\bin\Debug\BaseTest.dll");
             Assembly dll = Assembly.Load(matedata);
-            Type type = dll.GetType("BaseTest.DllMain");
-            object instance = dll.CreateInstance("BaseTest.DllMain");
-            type.GetMethod("JigTest").Invoke(instance, null);
+            Type type = dll.GetType("BaseTest.Dimesion.DynamicDim");
+            object instance = dll.CreateInstance("BaseTest.Dimesion.DynamicDim");
+            type.GetMethod("DynamicDimText").Invoke(instance, null);
         }
     }
 }
