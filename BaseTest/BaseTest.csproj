@@ -39,19 +39,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="accoremgd">
-      <HintPath>E:\AutoCAD2021\AutoCAD 2021\accoremgd.dll</HintPath>
+      <HintPath>..\..\..\..\AutoCAD2016\AutoCAD 2016\accoremgd.dll</HintPath>
     </Reference>
     <Reference Include="acdbmgd">
-      <HintPath>E:\AutoCAD2021\AutoCAD 2021\acdbmgd.dll</HintPath>
+      <HintPath>..\..\..\..\AutoCAD2016\AutoCAD 2016\acdbmgd.dll</HintPath>
     </Reference>
     <Reference Include="acmgd">
-      <HintPath>E:\AutoCAD2021\AutoCAD 2021\acmgd.dll</HintPath>
+      <HintPath>..\..\..\..\AutoCAD2016\AutoCAD 2016\acmgd.dll</HintPath>
     </Reference>
     <Reference Include="AdWindows">
-      <HintPath>E:\AutoCAD2016\AutoCAD 2016\AdWindows.dll</HintPath>
+      <HintPath>..\..\..\..\AutoCAD2016\AutoCAD 2016\AdWindows.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,8 +67,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\TimerAnimation.cs" />
     <Compile Include="Dimesion\DynamicDim.cs" />
     <Compile Include="DllMain.cs" />
+    <Compile Include="Jig\AutoRotate.cs" />
+    <Compile Include="Jig\BubbleJig.cs" />
+    <Compile Include="Jig\CircleJig.cs" />
     <Compile Include="Jig\MoveJig.cs" />
     <Compile Include="Jig\RectJig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -91,6 +96,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AcadPlugInCommon\AcadPlugInCommon.csproj">
+      <Project>{093417c5-6efb-4d47-84e8-0dcf4aef26cf}</Project>
+      <Name>AcadPlugInCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

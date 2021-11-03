@@ -57,16 +57,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="accoremgd">
-      <HintPath>E:\AutoCAD2021\AutoCAD 2021\accoremgd.dll</HintPath>
+      <HintPath>..\..\..\..\AutoCAD2016\AutoCAD 2016\accoremgd.dll</HintPath>
     </Reference>
     <Reference Include="acdbmgd">
-      <HintPath>E:\AutoCAD2021\AutoCAD 2021\acdbmgd.dll</HintPath>
+      <HintPath>..\..\..\..\AutoCAD2016\AutoCAD 2016\acdbmgd.dll</HintPath>
     </Reference>
     <Reference Include="acmgd">
-      <HintPath>E:\AutoCAD2021\AutoCAD 2021\acmgd.dll</HintPath>
+      <HintPath>..\..\..\..\AutoCAD2016\AutoCAD 2016\acmgd.dll</HintPath>
     </Reference>
     <Reference Include="AdWindows">
-      <HintPath>E:\AutoCAD2016\AutoCAD 2016\AdWindows.dll</HintPath>
+      <HintPath>..\..\..\..\AutoCAD2016\AutoCAD 2016\AdWindows.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

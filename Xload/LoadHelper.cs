@@ -14,11 +14,13 @@ namespace Xload
         [CommandMethod("Xload")]
         public void Xload()
         {
-            byte[] matedata = File.ReadAllBytes(@"D:\Code\CSharp\AcadDev\BaseTest\bin\Debug\BaseTest.dll");
-            Assembly dll = Assembly.Load(matedata);
-            Type type = dll.GetType("BaseTest.Dimesion.DynamicDim");
-            object instance = dll.CreateInstance("BaseTest.Dimesion.DynamicDim");
-            type.GetMethod("DynamicDimText").Invoke(instance, null);
+            string path = @"D:\Code\CSharp\AcadDev\BaseTest\bin\Debug\BaseTest.dll";
+            //byte[] matedata = File.ReadAllBytes(path);
+            //Assembly dll = Assembly.Load(matedata);
+            Assembly dll = Assembly.LoadFrom(path);
+            Type type = dll.GetType("BaseTest.DllMain");
+            object instance = dll.CreateInstance("BaseTest.DllMain");
+            type.GetMethod("CircleJig").Invoke(instance, null);
         }
     }
 }
